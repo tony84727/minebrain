@@ -1,8 +1,9 @@
 {:deps {io.grpc/grpc-okhttp {:mvn/version "1.32.1"}
         io.grpc/grpc-protobuf {:mvn/version "1.32.1"}
         io.grpc/grpc-stub {:mvn/version "1.32.1"}
-        org.apache.tomcat/annotations-api {:mvn/version "6.0.53"}}
- :extra-paths ["java"]
+        org.apache.tomcat/annotations-api {:mvn/version "6.0.53"}
+        org.clojure/core.async {:mvn/version "1.3.610"}}
+ :paths ["src" "java"]
  :aliases {:generate {:extra-paths ["buildSrc"]
                       :extra-deps {clj-http {:mvn/version "3.10.3"}}
                       :main-opts ["-m" "minebrain.build"]}}}
