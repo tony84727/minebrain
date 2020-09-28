@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/tony84727/minebrain/test-server
+gazelle(name = "gazelle")
+
+go_library(
+    name = "test-server_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/tony84727/minebrain/test-server",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@forge-gRPC//:go_chat",  # keep
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "test-server",
+    embed = [":test-server_lib"],
+    visibility = ["//visibility:public"],
+)

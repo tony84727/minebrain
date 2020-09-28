@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "chat",
+    srcs = ["src/main/proto/chat.proto"],
+    visibility = ["//visibility:public"],
+)
+
+go_proto_library(
+    name = "go_chat",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/tony84727/minebrain/test-server/forgegrpc",
+    proto = ":chat",
+    visibility = ["//visibility:public"],
+)
